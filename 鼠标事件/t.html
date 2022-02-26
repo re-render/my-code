@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    a{
+      text-decoration: none;
+    }
+
+    div,
+    li{
+      box-sizing: border-box;
+    }
+
+    .wrap {
+      width: 1200px;
+      height: 200px;
+      margin: 100px auto;
+    }
+    .wrap .list {
+      height: 100%;
+    }
+    .wrap .list .list-item.active {
+      width: 360px;
+    }
+
+    .wrap .list .list-item {
+      position: relative;
+      float: left;
+      width: 240px;
+      height: 100%;
+      padding: 10px;
+    }
+
+    
+    .wrap .list .list-item .card {
+      position: relative;
+      height: 100%;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .wrap .list .list-item:hover .card {
+      box-shadow: 0 0 10px #ccc;
+    }
+
+    .wrap .list .list-item .card .title{
+       width: 170px;
+       height: 80px;
+    }
+    .wrap .list .list-item .card .title a {
+       color: #333;
+       font-size: 14px;
+    }
+    .wrap .list .list-item .card .title a:hover {
+       color: red;
+    }
+
+    .wrap .list .list-item .card .price {
+      width: 170px;
+      height: 50%;
+      color: red;
+      line-height: 100px;
+    }
+
+    .wrap .list .list-item .card .img {
+      position: absolute;
+      bottom: 20px;
+      right: 15px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .wrap .list .list-item .card .img img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .wrap .list .list-item.active .card .img{
+       width: 150px;
+       height: 150px;
+    }
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrap">
+    <ul class="list">
+       <li class="list-item">
+         <div class="card">
+          <div class="title">
+             <a href="">Apple iPhone 13 (A2634) 256GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+          </div>
+          <div class="price">￥2999</div>
+          <div class="img">
+            <a href="">
+              <img src="./img/1.png" alt="">
+            </a>
+          </div>
+         </div>
+       </li>
+       <li class="list-item">
+        <div class="card">
+         <div class="title">
+            <a href="">Apple iPhone 13 (A2634) 256GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+         </div>
+         <div class="price">￥2999</div>
+         <div class="img">
+           <a href="">
+             <img src="./img/2.png" alt="">
+           </a>
+         </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+         <div class="title">
+            <a href="">Apple iPhone 13 (A2634) 256GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+         </div>
+         <div class="price">￥2999</div>
+         <div class="img">
+           <a href="">
+             <img src="./img/3.png" alt="">
+           </a>
+         </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+         <div class="title">
+            <a href="">Apple iPhone 13 (A2634) 256GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+         </div>
+         <div class="price">￥2999</div>
+         <div class="img">
+           <a href="">
+             <img src="./img/4.png" alt="">
+           </a>
+         </div>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card">
+         <div class="title">
+            <a href="">Apple iPhone 13 (A2634) 256GB 星光色 支持移动联通电信5G 双卡双待手机</a>
+         </div>
+         <div class="price">￥2999</div>
+         <div class="img">
+           <a href="">
+             <img src="./img/5.png" alt="">
+           </a>
+         </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+   <script>
+     
+     (function(document){
+
+         var oList = document.getElementsByClassName('list')[0],
+             oItems = document.getElementsByClassName('list-item'),
+             tIndex = 0;
+
+
+         var init = function(){
+           takeInterval()
+          //  takeInterval()
+         }
+
+         function addDomEvent(){
+           oList.addEventListener('mouseover', mouseOver, false);
+           oList.addEventListener('mouseout', mouseOut, false);
+         }
+
+         function mouseOver(e){
+            var e = e || window.event,
+                tar = e.target || e.srcElement,
+                target = getParent(tar, 'li');
+
+            for(var i = 0; i< oItems.length; i++){
+              if(target === oItems[i]){
+                oItems[i].style.width = null;
+                oItems[i].className += ' active';
+              }else{
+                oItems[i].className = 'list-item';
+                oItems[i].style.width = '210px';
+              }
+            }
+
+         }
+
+         function mouseOut(){
+          for(var i = 0; i< oItems.length; i++){
+                oItems[i].style.width = null;
+                oItems[i].className = 'list-item'
+            }
+         }
+
+         function getParent(target, tag){
+            while(target.tagName.toLowerCase() !== tag){
+              target = target.parentNode;
+            }
+            return target;
+         }
+
+         function delay(t){
+            return new Promise((resolve)=>{
+              setTimeout(() => {  
+                resolve();
+              }, t);
+            })
+         }
+
+         async function takeInterval(){
+            for(var i = 0; i< oItems.length; i++){
+              await delay(3000);
+
+              oItems[tIndex].style.width = null;
+              oItems[tIndex].className += ' active';
+
+              for(var j = 0; j<oItems.length; j++){
+
+                  if(oItems[j] !== oItems[tIndex]){
+                    oItems[j].className = 'list-item';
+                    oItems[j].style.width = '210px';
+                  }
+              }
+    
+              tIndex++;
+
+              if(tIndex === 5){
+                tIndex = 0;
+                takeInterval();
+              }
+       
+            }
+         }
+
+     })(document)
+
+   </script>
+</body>
+</html>

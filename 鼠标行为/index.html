@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+    }
+    ul,
+    li {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .wrapper{
+      position: relative;
+      left: 200px;
+      top: 200px;
+    }
+     .wrap{
+       position: absolute;
+       width: 200px;
+       height: 400px;
+       background-color: #fefefe;
+     }
+
+     .box{
+       height: 100%;
+       text-align: center;
+       box-sizing: border-box;
+     }
+
+     .box-item {
+       height: 40px;
+       line-height: 40px;
+       color: #636363;
+       box-sizing: border-box;
+     }
+
+     .box-item.active{
+       color: #c81623;
+       background-color: #989898;
+     }
+
+     .right{
+       position: absolute;
+       left: 200px;
+       width: 400px;
+       height: 400px;
+     }
+     .right .right-list {
+       height: 100%;
+     }
+
+     .right .item{
+       display: none;
+       height: 100%;
+       background-color: orange;
+     }
+
+
+  </style>
+  <title>Document</title>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="wrap">
+      <ul class="box">
+        <li class="box-item">手机、数码</li>
+        <li class="box-item">电脑、电视</li>
+        <li class="box-item">外套、卫衣、毛巾</li>
+        <li class="box-item">车载</li>
+        <li class="box-item">音箱</li>
+        <li class="box-item">沙发、桌子</li>
+        <li class="box-item">被子、枕头</li>
+        <li class="box-item">生鲜、水果、蔬菜、肉</li>
+        <li class="box-item">玩具</li>
+        <li class="box-item">鞋子</li>
+      </ul>
+    </div>
+    <div class="right">
+      <ul class="right-list">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <li class="item">6</li>
+        <li class="item">7</li>
+        <li class="item">8</li>
+        <li class="item">9</li>
+        <li class="item">10</li>
+      </ul>
+    </div>
+  </div>
+ 
+  <script src="./utlis.js"></script>
+  <script src="./index.js"></script>
+</body>
+</html>
