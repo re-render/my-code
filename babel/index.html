@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script src="./index.js"></script> -->
+  <script>
+
+    var _classCallCheck = function (instance, Constructor){
+      if(!(instance instanceof Constructor)){
+        throw new TypeError('Cannot call a class as a function');
+      }
+    }
+
+    var _createClass = function (){
+       function defineProperties(target, props){
+          for(var i = 0; i < props.length; i++){
+             var descriptor = props[i];
+             descriptor.enumerable = descriptor.enumerable || false;
+             descriptor.configurable = true;
+
+             if('value' in descriptor){
+               descriptor.writable = true;
+             }
+
+             Object.defineProperty(target, descriptor.key, descriptor);
+          }
+       }
+      return function(Conctructor, protoProps, staticProps){
+         if(protoProps){
+          defineProperties(Conctructor.prototype , protoProps);
+         }
+         if(staticProps){
+           defineProperties(Conctructor, staticProps);
+         }
+      }
+    }();
+
+
+    var Person = function(){
+       function Person(name, age){
+          _classCallCheck(this, Person);
+          
+          this.name = name;
+          this.age = age;
+       }
+
+       _createClass(Person, 
+        [
+          {
+            key: 'say',
+            value: function say(){
+              console.log(1);
+            }
+          },
+          {
+            key: 'sleep',
+            value: function sleep(){
+              console.log(1);
+            }
+          },
+        ],
+        [
+          {
+            key: 'eat',
+            value: function eat(){
+              console.log('eat');
+            }
+          },
+          {
+            key: 'drink',
+            value: function drink(){
+              console.log('drink');
+            }
+          }
+        ]
+       )
+
+
+
+       return Person;
+    }()
+
+    var p = new Person('zs', 12)
+    console.log(p)
+  </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="请输入搜索内容" />
+    <ul>
+      <li>- 暂无查询结果 -</li>
+    </ul>
+
+    <script src="./utlis.js"></script>
+    <script src="./tools.js"></script>
+    <script src="./ajax.js"></script>
+    <script src="./drft.js"></script>
+    <script type="text/javascript">
+      
+     (function(document){
+
+         var oInput = document.getElementsByTagName('input')[0],
+             oUl = document.getElementsByTagName('ul')[0];
+
+        init();
+
+         function init() {
+           
+           addSearchEvent();
+         }
+
+         function addSearchEvent() {
+            oInput.addEventListener('input', debounce(function(){
+              searchEvent();
+            }, 500, false), false);
+         }
+
+         function searchEvent(){
+            var iValue = oInput.value,
+                pList;
+            
+            if(iValue){
+              getData(iValue);
+            }else{
+              oUl.innerHTML = '<li>- 暂无查询结果 -</li>'
+            }
+            
+         }
+
+        //  function findData(data, value){
+        //     return data.reduce(function(prev, item){
+        //       item.name.includes(value) ? prev.push(item) : ''
+        //       return prev;
+        //     },[])
+        //  }
+         function getData(value){
+            myAJAX.ajax({
+                method: 'get',
+                url: `http://suggest.taobao.com/sug?code=utf-8&q=${value}`,
+                dataType: 'JSONP',
+                jsonpCallback: 'cb',
+                success:function(v){
+                  renderDom(v.result);
+                }
+              })
+         }
+
+
+         function renderDom(data){
+
+            var len = data.length,
+                frage = document.createDocumentFragment();
+
+            oUl.innerHTML = '';
+
+           for(var i = 0; i< data.length; i++){
+              var f = document.createElement('li'),
+                  item = data[i];
+              f.textContent = `${data[i][0]}`;
+              frage.appendChild(f);
+           }
+          
+           oUl.appendChild(frage);
+         }
+
+
+     })(document);
+    </script>
+</body>
+</html>

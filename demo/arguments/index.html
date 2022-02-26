@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+     function foo (a, b) {
+        a = 3;
+        console.log(arguments[0])
+        b = 2;
+        console.log(arguments[1]);
+        console.log(b)
+     }
+
+     //1. foo(1, undefined)
+     //2. foo(1, null)
+     //3. foo(1)
+
+     //没有传入实参的形参，无法在函数内部进行赋值,1、2效果一样，穿了值就与arguments有映射关系
+
+    //  function foo(n){
+    //    if(n <= 0){
+    //      return 1;
+    //    }
+    //    return n* foo(n - 1)
+    //  }
+
+    //  console.log(foo(4))
+    // 1 1 2 3 5 8 ...
+    // function fb(n){
+    //   if(n === 1 || n === 2){
+    //     return 1;
+    //   }
+    //   return fb(n - 1) + fb(n - 2);
+    // }
+    // console.log(fb(6))
+    // var b = 3; //undefined
+    // console.log(a); //function
+// function test(){
+//   console.log(b); //undefined
+//   if(a){
+//     var b = 2;
+//   }
+//   c = 3
+//   console.log('b',b)
+//   console.log(c) //3
+// }
+
+// var a; //undefined
+// test();
+// a = 1;
+  // a = 2;
+  // function test(e){
+  //   function e(){}
+  //   arguments[0] = 2;
+  //   console.log(e); // 2
+
+  //   if(a){
+  //     var b = 3;
+  //   }
+
+  //   var c;
+  //   a = 4;
+  //   var a;
+  //   console.log(b); //undefined
+  //   f = 5;
+  //   console.log(c); // undefined
+  //   console.log(a); // 4
+  // }
+
+  // var a;
+  // test(1);
+
+  //a undefined
+  //test -> function
+  //b -> undefined
+  //c -> undefined
+  //a -> undefined
+  //e -> 1 -> function
+  var obj = {
+    a: 1
+  }
+  // Object.defineProperty(obj, 'b', {
+  //   value: 3,
+  //   writable: true,
+  //   configurable: true,
+  //   enumerable: true,
+  //   get(){}
+  // })
+
+  for (const key in obj) {
+    if (Object.hasOwnProperty.call(obj, key)) {
+      const element = obj[key];
+      console.log(element)
+    }
+  }
+
+  </script>
+</body>
+</html>
