@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* body{
+      margin: 0;
+    }
+    div {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      box-sizing: border-box;
+      background-color: blueviolet;
+    }
+
+    div[id='menu']{
+      position: absolute;
+      display: none;
+      width: 150px;
+      height: 200px;
+      background-color: coral;
+    } */
+  </style>
+  <title>Document</title>
+</head>
+<body>
+ 
+  <!-- <div></div> -->
+  <!-- <div id="menu"></div> -->
+  <script src="./utlis.js"></script>
+  <script src="./tools.js"></script>
+  <script src="./ajax.js"></script>
+  <script src="./drft.js"></script>
+  <script src="" ></script>
+  <script>
+    var p1 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(1)
+         }, 500)
+       })
+    }
+    var p2 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(2)
+         }, 800)
+       })
+    }
+    var p3 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(3)
+         }, 1000)
+       })
+    }
+    var p4 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(4)
+         }, 1500)
+       })
+    }
+    var p5 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(5)
+         }, 2000)
+       })
+    }
+    var p6= function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(6)
+         }, 2500)
+       })
+    }
+    var p7 = function (){
+       return new Promise(resolve => {
+         setTimeout(() => {
+            resolve(7)
+         }, 3000)
+       })
+    }
+
+    var arr = [p1, p2, p3, p4, p5, p6, p7];
+
+    var concurrcey = (function(){
+        var arr = [],
+            i = 0,
+            iter;
+        
+        iter = g(arr);
+
+        function *g(arr){
+            for(var i = 0; i < arr.length; i++){
+              yield arr[i];
+            }
+        }
+
+
+        function nextExecutor(n){
+            n.value(function(){
+                const y = iter.next();
+                if(!y.done){
+                  nextExecutor(y);
+                }else{
+                  return;
+                }
+            })
+        }
+
+        function init(){
+          nextExecutor(iter.next());
+        }
+
+        function promiseAll (arr){
+           return function(next){
+             return Promise.all(arr.map(fn => fn())).then(res => {
+                console.log(res)
+                 next();
+             });
+           }
+        }
+        
+        return function(list, limit){
+            
+          while(list.length > 0){
+              arr.push(promiseAll(list.splice(0, limit)))
+          }
+
+          init();
+        }
+
+
+    })()
+    
+    concurrcey(arr, 3);
+
+    
+
+
+
+    
+  </script>
+</body>
+</html>
