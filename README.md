@@ -1,2 +1,2 @@
 # my-code
-my learning diary
+记录一些平时的练习
